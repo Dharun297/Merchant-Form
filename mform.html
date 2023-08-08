@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="form.css">
+</head>
+
+<body>
+    <h1>New Business</h1>
+    <form>
+
+
+
+        <label for="name">Name:</label>
+        <input type="text" id="name" placeholder="Kumar" value=""><br><br>
+
+        <label for="email">Email:</label>
+        <input type="text" id="mail" placeholder="minions@gmail.com" value=""><br><br>
+        <label for="phone">Phone:</label>
+        <input type="number" id="mobilenumber" placeholder="67890 54321" value=""><br><br>
+        <label for="website">Website:</label>
+        <input type="text" id="website" placeholder="Google.com" value=""><br><br>
+        <label for="contact name">Contact Name:</label>
+        <input type="text" id="contactname" placeholder="Sankar" value=""><br><br>
+        <label for="contact number">Contact Number:</label>
+        <input type="number" id="contactnumber" placeholder="Contact Number" value=""><br><br>
+        <label for="contact email">Contact Email:</label>
+        <input type="text" id="contactemail" placeholder="xyz@gmail.com" value=""><br><br>
+        <label for="notes">Notes:</label>
+        <textarea id="notes" name="w3review" rows="5" cols="21"></textarea><br><br>
+
+        <label for="date">Possible Values:</label>
+
+        <input type="radio" id="business" name="Business" value="BUSINESS">
+        <label for="html">Small Business</label>
+        <input type="radio" id="enterprise" name="Business" value="ENTERPRISE">
+        <label for="css">Enterprise</label>
+        <input type="radio" id="entrepreneur" name="Business" value="ENTREPRENEUR">
+        <label for="javascript">Entrepreneur</label><br><br>
+
+        <label for="products">Choose a Product:</label>
+        <select name="Products" id="Products">
+            <option value="clothes">Clothes</option>
+            <option value="groceries">Groceries</option>
+            <option value="toys">Toys</option>
+            <option value="electronics">Electronics</option>
+            <option value="digital">Digital</option>
+
+        </select><br><br>
+        <label for="account">Comission Percentage:</label>
+        <input type="checkbox" id="critical" name="yes" value="YES">
+
+        <label for="yes">yes</label>
+        <input type="checkbox" id="nocritical" name="no" value="NO">
+
+        <label for="o">No</label><br><br>
+
+
+        <label for="date">Active from:</label>
+
+        <input type="date" id="myDate" value="2023-08-09"><br><br>
+
+        <form>
+            <label for="myfile">Select a file:</label>
+            <input type="file" id="myfile" name="myfile"><br><br>
+        </form>
+
+        <label for="date">Payment Gateways:</label>
+
+        <input class="pay" type="checkbox" id="new" name="yes" value="UPI">
+        <label for="UPI"> UPI</label>
+
+        <input type="checkbox" id="new1" name="yes" value="Internet Banking">
+        <label for="Internet Banking"> Internet Banking</label>
+        <input type="checkbox" id="new2" name="yes" value="Card Payment">
+        <label for="Card Payment"> Card Payment</label><br><br>
+
+    </form>
+    <form>
+        <button type="submit" value="Submit">Submit</button>
+        <button type="reset" value="Reset">Reset</button>
+    </form><br>
+    <div class="new">
+        <table>
+            <thead>
+
+                <tr>
+                    <td>Name</td>
+                    <td>Email</td>
+                    <td>Phone</td>
+                    <td>Website</td>
+                    <td>Contact Name</td>
+                    <td>Contact Number</td>
+                    <td>Contact Email</td>
+                    <td>Notes</td>
+                    <td>Possible Values</td>
+                    <td>Choose a Product</td>
+                    <td>Comission Percentage</td>
+                    <td>Active From</td>
+                    <td>Select a file</td>
+                    <td>Payment Gateways</td>
+                    
+                    <td><button>Edit</button></td>
+                    <td><button>Delete</button></td>
+                    <td><button>Save</button></td>
+
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+
+</body>
+
+<script src="form.js"></script>
+
+</html>
