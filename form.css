@@ -1,0 +1,32 @@
+h1{
+    text-align: center;
+    color:rgb(43, 13, 2)
+}
+body{
+    background-color: peru;
+    
+}
+input{
+    color: rgb(90, 68, 110);
+
+     
+}
+#SmallBusiness{
+    align-items: center;
+}
+label {
+    display: inline-block;
+    width: 150px;
+  }
+.new{
+display: inline;
+justify-content: space-around;
+}
+th,td{
+border-collapse: collapse;
+border: 3px solid black;
+
+}
+table{
+    border-collapse: collapse;
+}

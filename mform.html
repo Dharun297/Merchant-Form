@@ -61,30 +61,30 @@
 
         <label for="date">Active from:</label>
 
-        <input type="date" id="myDate" value="2023-08-09"><br><br>
+        <input type="date" id="myDate" value="2023-08-10"><br><br>
 
-        <form>
-            <label for="myfile">Select a file:</label>
-            <input type="file" id="myfile" name="myfile"><br><br>
-        </form>
 
-        <label for="date">Payment Gateways:</label>
-
-        <input class="pay" type="checkbox" id="new" name="yes" value="UPI">
-        <label for="UPI"> UPI</label>
-
-        <input type="checkbox" id="new1" name="yes" value="Internet Banking">
-        <label for="Internet Banking"> Internet Banking</label>
-        <input type="checkbox" id="new2" name="yes" value="Card Payment">
-        <label for="Card Payment"> Card Payment</label><br><br>
-
+        <label for="myfile">Select a file:</label>
+        <input type="file" id="myfile" name="myfile"><br><br>
     </form>
-    <form>
-        <button type="submit" value="Submit">Submit</button>
-        <button type="reset" value="Reset">Reset</button>
-    </form><br>
-    <div class="new">
-        <table>
+
+    <label for="date">Payment Gateways:</label>
+
+    <input type="checkbox" id="new" name="yes" value="UPI">
+    <label for="UPI"> UPI</label>
+
+    <input type="checkbox" id="new1" name="yes" value="Internet Banking">
+    <label for="Internet Banking"> Internet Banking</label>
+    <input type="checkbox" id="new2" name="yes" value="Card Payment">
+    <label for="Card Payment"> Card Payment</label><br><br>
+
+
+    <button type="submit" value="Submit" onclick="onsubmit()"> submit</button>
+    <button type="reset" value="Reset">Reset</button>
+    </form>
+    <br>
+    <div>
+        <table id="inputData">
             <thead>
 
                 <tr>
@@ -102,14 +102,14 @@
                     <td>Active From</td>
                     <td>Select a file</td>
                     <td>Payment Gateways</td>
-                    
-                    <td><button>Edit</button></td>
-                    <td><button>Delete</button></td>
-                    <td><button>Save</button></td>
+                    <td>Action</td>
+
+                    <!-- <td><button>Edit</button><br>
+                    <button>Delete</button><br>
+                    <button>Save</button><br></td> -->
 
                 </tr>
             </thead>
-            <tbody></tbody>
         </table>
 
 </body>
