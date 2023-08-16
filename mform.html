@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Merchant Form</Form>
+    <title>Merchant Form</title>
     </title>
     <link rel="stylesheet" href="form.css">
 </head>
@@ -13,8 +13,7 @@
     <h1>NEW BUSINESS</h1>
     <form id="myForm" onsubmit="event.preventDefault();onFormSubmit();" autocomplete="off">
 
-        <label class="validation-error hide" id="firstnameValidationError">
-            <label>Name</label>
+        <label class="validation-error hide" id="firstnameValidationError">Name</label>
 
             <input type="text" name="name" id="name"><br><br>
             <label>Email</label>
@@ -38,12 +37,12 @@
             <input type="tel" id="contactnumber" name="phone" maxlength="10"><br><br>
 
 
-            <label for="email">ContactMail</label>
+            <label for="email">ContactEmail</label>
             <input type="email" id="contactemail" name="another"><br><br>
 
 
             <label for="notes">Notes</label>
-            <textarea name="notes" id="notes" cols="21" rows="7"></textarea><br><br>
+            <textarea name="notes" id="notes" cols="24" rows="8"></textarea><br><br>
 
 
             <label for="type">Type:</label>
@@ -68,11 +67,11 @@
             </select><br><br>
 
 
-            <label for="comm">commmission</label>
+            <label for="Commission">commmission</label>
             <input type="tel" name="commission" id="commission">;<br><br>
 
 
-            <label for="activeform">Activeform</label>
+            <label for="activefrom">Activeform</label>
             <input type="date" name="date" id="mydate"><br><br>
 
 
@@ -101,7 +100,7 @@
 
             <input type="submit" value="Submit">
 
-    </form>
+    </form><br><br>
     <table id="datas">
         <thead>
             <tr>
@@ -123,7 +122,7 @@
                 <th>Action</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody id="tbody">
         </tbody>
     </table>
     <script src="form.js"></script>
