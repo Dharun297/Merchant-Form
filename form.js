@@ -1,6 +1,8 @@
 document.getElementById("myForm");
 document.addEventListener("submit", function (event) {
   event.preventDefault();
+
+ 
   let form = event.target;
   let formData = new FormData(form);
   var data = {};
@@ -12,7 +14,8 @@ document.addEventListener("submit", function (event) {
   localStorage.setItem("data", JSON.stringify(data));
 });
 var selectedRow = null;
-function onFormSubmit() {
+function onFormSubmit()
+{
   if (validate()) {
     var formData = readFormData();
     if (selectedRow == null) insertNewRecord(formData);
@@ -37,9 +40,10 @@ function readFormData() {
   formData["file"] = document.getElementById("myfile").value;
   formData["yes"] = document.getElementById("yes").value;
   formData["payment"] = document.getElementById("transaction").value;
+  localStorage.setItem("data", JSON.stringify(formData));
+  console.log(formData);
   return formData;
 }
-// console.log("name");
 function insertNewRecord(data) {
   var table = document.getElementById("datas").getElementsByTagName("tbody")[0];
   var newRow = table.insertRow(table.length);
@@ -111,8 +115,7 @@ function onEdit(td) {
   document.getElementById("mydate").value = selectedRow.cells[11].innerHTML;
   document.getElementById("myfile").value = selectedRow.cells[12].innerHTML;
   document.getElementById("yes").value = selectedRow.cells[13].innerHTML;
-  document.getElementById("transaction").value =
-    selectedRow.cells[14].innerHTML;
+  document.getElementById("transaction").value = selectedRow.cells[14].innerHTML;
 }
 function updateRecord(formData)
  {
@@ -132,9 +135,9 @@ function updateRecord(formData)
   selectedRow.cells[13].innerHTML = formData.yes;
   selectedRow.cells[14].innerHTML = formData.payment;
 }
-function onDelete(td) {
+function onDelete(tabledata) {
   if (confirm("Are you sure to delete this record ?")) {
-    row = td.parentElement.parentElement;
+    row = tabledata.parentElement.parentElement;
     document.getElementById("datas").deleteRow(row.rowIndex);
     resetForm();
   }
@@ -143,17 +146,16 @@ function validate() {
   isValid = true;
   if (document.getElementById("name").value == "") {
     isValid = false;
-    document
-      .getElementById("firstnameValidationError")
-      .classList.remove("hide");
+    document.getElementById("firstnameValidationError").classList.remove("hide");
   } else {
     isValid = true;
     if (
-      !document
-        .getElementById("firstnameValidationError")
-        .classList.contains("hide")
+      !document.getElementById("firstnameValidationError").classList.contains("hide")
     )
       document.getElementById("firstnameValidationError").classList.add("hide");
   }
   return isValid;
 }
+
+
+
