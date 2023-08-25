@@ -1,32 +1,39 @@
-h1{
-    text-align: center;
-    color:rgb(43, 13, 2)
-}
-body{
-    background-color: peru;
-    
-}
-input{
-    color: rgb(90, 68, 110);
+ h1 {
+  text-align: center;
+  color: rgb(37, 12, 3);
 
-     
 }
-#SmallBusiness{
-    align-items: center;
+body {
+    /* background-image: url(Grasslands.jpg); */
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* color: #ffffff; */
+  
+ }
+
+input {
+  font-size: 15px;
+  color: rgb(74, 199, 36);
+  font-weight: bold;
+}
+#SmallBusiness {
+  align-items: center;
 }
 label {
-    display: inline-block;
-    width: 150px;
-  }
-.new{
-display: inline;
-justify-content: space-around;
+  display: inline-table;
+  width: 150px;
 }
-th,td{
-border-collapse: collapse;
-border: 3px solid black;
+.new {
+  display: inline;
+  justify-content: space-around;
+}
+th,td { 
+  border-collapse: collapse;
+ border: 3px solid rgb(240, 125, 18);
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+}  
 
-}
-table{
-    border-collapse: collapse;
-}
+
