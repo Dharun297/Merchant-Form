@@ -1,18 +1,19 @@
-document.getElementById("myForm");
-document.addEventListener("submit", function (event) {
-  event.preventDefault();
+// document.getElementById("myForm");
+// document.addEventListener("submit", function (event) {
+//   event.preventDefault();
 
  
-  let form = event.target;
-  let formData = new FormData(form);
-  var data = {};
-  for (let x of formData.entries()) {
-    data[x[0]] = x[1];
-    console.log(x[0] + x[1]);
-  }
-  console.log(data, "data");
-  localStorage.setItem("data", JSON.stringify(data));
-});
+//   let form = event.target;
+//   let formData = new FormData(form);
+//   var data = {};
+//   for (let x of formData.entries()) {
+//     data[x[0]] = x[1];
+//     console.log(x[0] + x[1]);
+  // }
+//   console.log(data, "data");
+//   localStorage.setItem("data", JSON.stringify(data));
+// });
+
 var selectedRow = null;
 function onFormSubmit()
 {
@@ -38,11 +39,10 @@ function readFormData() {
   formData["commission"] = document.getElementById("commission").value;
   formData["date"] = document.getElementById("mydate").value;
   formData["file"] = document.getElementById("myfile").value;
-  formData["yes"] = document.getElementById("yes").value;
-  formData["payment"] = document.getElementById("transaction").value;
+  formData["critical"] = account();
+    formData["payment"] = payment();
   localStorage.setItem("data", JSON.stringify(formData));
-  console.log(formData);
-  return formData;
+ return formData;
 }
 function insertNewRecord(data) {
   var table = document.getElementById("datas").getElementsByTagName("tbody")[0];
@@ -155,7 +155,147 @@ function validate() {
       document.getElementById("firstnameValidationError").classList.add("hide");
   }
   return isValid;
+ }
+
+// function beginner() {
+//   var radio = document.getElementsByName("beginner");
+//   var selectedType = "";
+//   for (i = 0; i < radio.length; i++) {
+//     if (radio[i].checked) selectedType = radio[i].value;
+//   }
+//   return selectedType;
+// }
+// function payment() {
+//   var payments = document.getElementsByName("payment");
+//   var selectedType = [];
+//   for (i = 0; i < payments.length; i++) {
+//     if (payments[i].checked) selectedType.push(payments[i].value);
+//   }
+//   return selectedType;
+// }
+
+function account() {
+  var radio = document.getElementsByName("account");
+  var selectedType = "";
+  for (i = 0; i < radio.length; i++) {
+    if (radio[i].checked) selectedType = radio[i].value;
+  }
+  return selectedType;
 }
 
 
+// function payment() {
+//   var paymentMethods = []; // Initialize as an empty array
+//   var paymentCheckboxes = document.querySelectorAll('input[name="payment"]:checked');
+//   paymentCheckboxes.forEach(function (checkbox) {
+//     paymentMethods.push(checkbox.value); // Add selected payment methods to the array
+//   });
+//   return paymentMethods;
+// }
+function payment() {
+  var paymentMethods = []; // Initialize as an empty array
+  var paymentCheckboxes = document.querySelectorAll('input[name="payment"]:checked');
+  paymentCheckboxes.forEach(function (checkbox) {
+    paymentMethods.push(checkbox.value); // Add selected payment methods to the array
+  });
+
+  // Clear the selected checkboxes
+  paymentCheckboxes.forEach(function (checkbox) {
+    checkbox.checked = false;
+  });
+
+  return paymentMethods;
+}
+function onFormSubmit() {
+  if (validate()) {
+    var formData = readFormData();
+    if (selectedRow == null) insertNewRecord(formData);
+    else updateRecord(formData);
+
+    // Call the payment function to clear the selected checkboxes
+    payment();
+
+    resetForm();
+  }
+}
+  // Clear the selection of "critical" radio buttons
+  var criticalRadios = document.getElementsByName("account");
+  for (var i = 0; i < criticalRadios.length; i++) {
+    criticalRadios[i].checked = false;
+  }
+
+  selectedRow = null;
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("myForm");
+
+  form.addEventListener("onSubmit", (event) => {
+    event.preventDefault();
+
+    const formData = new FormData(form);
+
+    // const formDataObject = {};
+    //   formData.forEach(function (value, key) {
+    //     formDataObject[key] = value;
+    //   });
+
+    const formDataObject = {};
+    formData.forEach((value, key) => {
+      if (formDataObject[key]) {
+        if (Array.isArray(formDataObject[key])) {
+          formDataObject[key].push(value);
+        } else {
+          formDataObject[key] = [formDataObject[key], value];
+        }
+      } else {
+        formDataObject[key] = value;
+      }
+    });
+
+       // Retrieve existing stored data or initialize an empty array
+       let storedData = JSON.parse(localStorage.getItem("formData")) || [];
+
+       // Add the current form data to the stored data array
+       storedData.push(formDataObject);
+   
+       // Store the updated data in localStorage
+       localStorage.setItem("formData", JSON.stringify(storedData));
+   
+       console.log("Form Data:", formDataObject);
+   
+       form.reset();
+    });
+   
+     // Load and populate stored form data on page load
+     const storedFormData = localStorage.getItem("formData");
+     if (storedFormData) {
+       const parsedData = JSON.parse(storedFormData);
+       
+       console.log("Stored Form Data:", parsedData);
+     }
+});
+
+
+  // Load stored form data on page load
+   const storedFormData = localStorage.getItem("formData");
+  if (storedFormData) {
+    const parsedData = JSON.parse(storedFormData);
+    for (const key in parsedData) {
+      if (Array.isArray(parsedData[key])) {
+        parsedData[key].forEach((value) => {
+          const input = form.querySelector(`[name="${key}"][value="${value}"]`);
+          if (input) {
+            input.checked = true;
+          }
+        });
+      } else {
+        // const inputs = form.querySelector(`[name="${key}"]`);
+        // if (inputs) {
+        //   inputs.value = parsedData[key];
+     }
+     }
+    }
+  // }
 

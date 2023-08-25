@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -11,8 +11,8 @@
 
 <body>
     <h1>NEW BUSINESS</h1>
-    <form id="myForm" onsubmit="event.preventDefault();onFormSubmit();" autocomplete="off">
-
+    <form id="myForm" onsubmit="event.preventDefault(); onFormSubmit();">
+        
         <label class="validation-error hide" id="firstnameValidationError">Name</label>
 
             <input type="text" name="name" id="name"><br><br>
@@ -46,13 +46,13 @@
 
 
             <label for="type">Type:</label>
-            <input type="radio" name="beginner" id="business" value="small">
+            <input type="radio" name="beginner" id="business" value="Begin">
 
             <label for="Small">Small buisiness</label>
-            <input type="radio" name="beginner" id="business" value="small">
+            <input type="radio" name="beginner" id="business" value="Begin">
 
             <label for="entreprise">Entreprise</label>
-            <input type="radio" name="beginner" id="business" value="small">
+            <input type="radio" name="beginner" id="business" value="Begin">
 
             <label for="entreprenuer">Entreprenuer</label><br><br>
 
@@ -68,28 +68,29 @@
 
 
             <label for="Commission">commmission</label>
-            <input type="tel" name="commission" id="commission">;<br><br>
+            <input type="tel" name="Commission" id="commission"><br><br>
 
 
             <label for="activefrom">Activeform</label>
             <input type="date" name="date" id="mydate"><br><br>
 
-
+           
             <label for="logo">LOGO</label>
             <input type="file" name="file" id="myfile"><br><br>
 
-
             <label for="critical account">Critical Account</label>
-            <input type="checkbox" name="yes" id="yes" value="Yes">
 
+            <input type="checkbox" name="account" id="yes" value="YES">
             <label for="yes">YES</label>
-            <input type="checkbox" name="yes" id="yes" value="yes">
 
-            <label for="NO">NO</label><br><br>
+            <input type="checkbox" name="account" id="no" value="NO">
+            <label for="NO">NO</label><br><br> 
+ 
+        
 
 
             <label for="payment">Payment</label>
-            <input type="checkbox" name="payment" id="transaction" value="UPI">
+                        <input type="checkbox" name="payment" id="transaction" value="UPI">
             <label for="upi">UPI</label>
 
             <input type="checkbox" name="payment" id="transaction" value="INTERNET BANKING">
@@ -98,8 +99,14 @@
             <input type="checkbox" name="payment" id="transaction" value="CASH ON DELIVERY">
             <label for="Cash">Cash On Delivery</label><br><br>
 
-            <input type="submit" value="Submit">
-
+            <input type="submit" value="Submit"><br><br>
+            
+            <label for="category"> Type</label>
+            <select name="category" id="select">
+                <option value="clothes">Small Business</option>
+                <option value="electronics">Entreprise</option>
+                <option value="groceries">Entreprenuer</option>
+                 <input type="button" value="Filter">
     </form><br><br>
     <table id="datas">
         <thead>
@@ -107,19 +114,19 @@
                 <th>Name</th>
                 <th>Email</th>
                 <th>PhoneNumber</th>
-                <th>website</th>
-                <th>contactname</th>
-                <th>contactnumber</th>
+                <th>Website</th>
+                <th>ContactName</th>
+                <th>ContactNumber</th>
                 <th>ContactMail</th>
                 <th>Notes</th>
                 <th>Type</th>
-                <th>category</th>
-                <th>commmission</th>
+                <th>Category</th>
+                <th>Commission</th>
                 <th>Activeform</th>
                 <th>LOGO</th>
                 <th>Critical Account</th>
                 <th>Payment</th>
-                <th>Action</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody id="tbody">
@@ -128,4 +135,5 @@
     <script src="form.js"></script>
 </body>
 
-</html>
+</html> 
+ 
