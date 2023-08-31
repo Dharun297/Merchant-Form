@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -12,128 +12,163 @@
 <body>
     <h1>NEW BUSINESS</h1>
     <form id="myForm" onsubmit="event.preventDefault(); onFormSubmit();">
-        
+
         <label class="validation-error hide" id="firstnameValidationError">Name</label>
 
-            <input type="text" name="name" id="name"><br><br>
-            <label>Email</label>
+        <input type="text" name="name" id="name"><br><br>
+        <label>Email</label>
 
-            <input type="text" name="email" id="email"><br><br>
-
-
-            <label>PhoneNumber</label>
-            <input type="tel" name="number" id="phone" maxlength="10"><br><br>
+        <input type="text" name="email" id="email"><br><br>
 
 
-            <label for="website">website</label>
-            <input type="text" id="website" name="Website"><br><br>
+        <label>PhoneNumber</label>
+        <input type="tel" name="number" id="phone" maxlength="10"><br><br>
 
 
-            <label for="Contactname">contactname</label>
-            <input type="text" id="contactname" name="contact"><br><br>
+        <label for="website">website</label>
+        <input type="text" id="website" name="Website"><br><br>
 
 
-            <label for="phone">contactnumber</label>
-            <input type="tel" id="contactnumber" name="phone" maxlength="10"><br><br>
+        <label for="Contactname">contactname</label>
+        <input type="text" id="contactname" name="contact"><br><br>
 
 
-            <label for="email">ContactEmail</label>
-            <input type="email" id="contactemail" name="another"><br><br>
+        <label for="phone">contactnumber</label>
+        <input type="tel" id="contactnumber" name="phone" maxlength="10"><br><br>
 
 
-            <label for="notes">Notes</label>
-            <textarea name="notes" id="notes" cols="24" rows="8"></textarea><br><br>
+        <label for="email">ContactEmail</label>
+        <input type="email" id="contactemail" name="another"><br><br>
 
 
-            <label for="type">Type:</label>
-            <input type="radio" name="beginner" id="business" value="Begin">
-
-            <label for="Small">Small buisiness</label>
-            <input type="radio" name="beginner" id="business" value="Begin">
-
-            <label for="entreprise">Entreprise</label>
-            <input type="radio" name="beginner" id="business" value="Begin">
-
-            <label for="entreprenuer">Entreprenuer</label><br><br>
+        <label for="notes">Notes</label>
+        <textarea name="notes" id="notes" cols="24" rows="8"></textarea><br><br>
 
 
-            <label for="category"> category</label>
-            <select name="category" id="select">
-                <option value="clothes">clothes</option>
-                <option value="toys">toys</option>
-                <option value="electronics">Electronics</option>
-                <option value="groceries">Groceries</option>
-                <option value="digital">Digital</option>
-            </select><br><br>
+        <label for="type">Type:</label>
+        <input type="radio" name="beginner" id="business" value="Small Business">
+
+        <label for="Small business">Small buisiness</label>
+        <input type="radio" name="beginner" id="entreprise" value="Entreprise">
+
+        <label for="entreprise">Entreprise</label>
+        <input type="radio" name="beginner" id="entrepreneur" value="Entrepreneur">
+
+        <label for="entreprenuer">Entreprenuer</label><br><br>
 
 
-            <label for="Commission">commmission</label>
-            <input type="number" name="Commission" id="commission"><br><br>
+        <label for="category"> category</label>
+        <select name="category" id="select">
+            <option value="clothes">clothes</option>
+            <option value="toys">toys</option>
+            <option value="electronics">Electronics</option>
+            <option value="groceries">Groceries</option>
+            <option value="digital">Digital</option>
+        </select><br><br>
 
 
-            <label for="activefrom">Activeform</label>
-            <input type="date" name="date" id="mydate"><br><br>
+        <label for="Commission">commmission</label>
+        <input type="number" name="Commission" id="commission"><br><br>
 
-           
-            <label for="logo">LOGO</label>
-            <input type="file" name="file" id="myfile"><br><br>
 
-            <label for="critical account">Critical Account</label>
+        <label for="activefrom">Activeform</label>
+        <input type="date" name="date" id="mydate"><br><br>
 
-            <input type="checkbox" name="account" id="yes" value="YES">
-            <label for="yes">YES</label>
 
-            <input type="checkbox" name="account" id="yes" value="NO">
-            <label for="NO">NO</label><br><br> 
- 
+        <label for="logo">LOGO</label>
+        <input type="file" name="file" id="myfile"><br><br>
+
+        <label for="critical account">Critical Account</label>
+
+        <input type="checkbox" name="account" id="yes" value="Yes">
+        <label for="es">YES</label>
+
+        <input type="checkbox" name="account" id="yes" value="No">
+        <label for="No">NO</label><br><br>
+
+
+
+
+        <label for="payments">Payment</label>
+        <input type="checkbox" name="payment" id="transaction" value="Upi">
+        <label for="upi">UPI</label>
+
+        <input type="checkbox" name="payment" id="transaction" value="Card Payment">
+        <label for="Card Payment">Card Payment</label>
+
+        <input type="checkbox" name="payment" id="transaction" value="Cash On Delivery">
+        <label for="Cash on Delivery">Cash On Delivery</label><br><br>
+
+        <input type="submit" value="Submit"><br><br>
+<!-- ------------------------------------Filters the Data------------------------------------------------------------------- -->
+<select id="businessCategoryFilter">
+    <option value="all">All</option>
+    <option value="small">Small Business</option>
+    <option value="entrepreneur">Entrepreneur</option>
+    <option value="enterprise">Enterprise</option>
+    <!-- Add more business categories as needed -->
+</select>
+<button onclick="filterBusinessCategory()">Filter</button><br><br>
+
+
+<!-- -----------------------------------------Filter select------------------------------------------------------- -->
+<select id="categoryFilter">
+    <option value="all">All</option>
+    <option value="Groceries">Groceries</option>
+    <option value="Toys">Toys</option>
+    <option value="clothes">clothes</option>
+    <option value="electronics">Electronics</option>
+    <option value="digital">Digital</option>
+
+    <!-- Add more categories as needed -->
+</select>
+<button onclick="filterCategory()">Filter</button><br><br>
+
+
+        <select id="criticalFilter">
+            <option value="all">All</option>
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+        </select>
+        <button onclick="filterSelect()">Filter</button><br><br>
         
 
+         <label for="payment">Payment</label>
+        <input type="checkbox" name="payment" id="transactions" value="Upi">
+        <label for="upi">UPI</label>
 
-            <label for="payment">Payment</label>
-                        <input type="checkbox" name="payment" id="transaction" value="Upi">
-            <label for="upi">UPI</label>
+        <input type="checkbox" name="payment" id="transactions" value="Card Payment">
+        <label for="Internet Banking">Card Payment</label>
 
-            <input type="checkbox" name="payment" id="transaction" value="Internet Banking">
-            <label for="Internet Banking">Internet Banking</label>
+        <input type="checkbox" name="payment" id="transactions" value="Cash On Delivery">
+        <label for="Cash">Cash On Delivery</label>
 
-            <input type="checkbox" name="payment" id="transaction" value="Cash On Delivery">
-            <label for="Cash">Cash On Delivery</label><br><br>
-
-            <input type="submit" value="Submit"><br><br>
-            
-            <label for="category"> Type</label>
-            <select name="category" id="select">
-                <option value="clothes">Small Business</option>
-                <option value="electronics">Entreprise</option>
-                <option value="groceries">Entreprenuer</option>
-                 <input type="button" value="Filter">
-    </form><br><br>
-    <table id="datas">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Email</th>
-                <th>PhoneNumber</th>
-                <th>Website</th>
-                <th>ContactName</th>
-                <th>ContactNumber</th>
-                <th>ContactMail</th>
-                <th>Notes</th>
-                <th>Type</th>
-                <th>Category</th>
-                <th>Commission</th>
-                <th>Activeform</th>
-                <th>LOGO</th>
-                <th>Critical Account</th>
-                <th>Payment</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody id="tbody">
-        </tbody>
-    </table>
-    <script src="form.js"></script>
+        <button onclick="filterPayment()">Filter</button>
+        <table id="datas">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>PhoneNumber</th>
+                    <th>Website</th>
+                    <th>ContactName</th>
+                    <th>ContactNumber</th>
+                    <th>ContactMail</th>
+                    <th>Notes</th>
+                    <th>Type</th>
+                    <th>Category</th>
+                    <th>Commission</th>
+                    <th>Activeform</th>
+                    <th>LOGO</th>
+                    <th>Critical Account</th>
+                    <th>Payment</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="tbody">
+            </tbody>
+        </table>
+        <script src="form.js"></script>
 </body>
 
-</html> 
- 
+</html>

@@ -1,47 +1,22 @@
-// document.getElementById("myForm");
-// document.addEventListener("submit", function (event) {
-//   event.preventDefault();
-
- 
-//   let form = event.target;
-//   let formData = new FormData(form);
-//   var data = {};
-//   for (let x of formData.entries()) {
-//     data[x[0]] = x[1];
-//     console.log(x[0] + x[1]);
-  // }
-//   console.log(data, "data");
-//   localStorage.setItem("data", JSON.stringify(data));
-// });
-
-var selectedRow = null;
-function onFormSubmit()
-{
-  if (validate()) {
-    var formData = readFormData();
-    if (selectedRow == null) insertNewRecord(formData);
-    else updateRecord(formData);
-    resetForm();
-  }
-}
 function readFormData() {
   var formData = {};
   formData["name"] = document.getElementById("name").value;
   formData["email"] = document.getElementById("email").value;
   formData["number"] = document.getElementById("phone").value;
   formData["website"] = document.getElementById("website").value;
-  formData["contact"] = document.getElementById("contactname").value;
-  formData["phone"] = document.getElementById("contactnumber").value;
-  formData["another"] = document.getElementById("contactemail").value;
+  formData["ContactName"] = document.getElementById("contactname").value;
+  formData["ContactPhone"] = document.getElementById("contactnumber").value;
+  formData["Contactemail"] = document.getElementById("contactemail").value;
   formData["notes"] = document.getElementById("notes").value;
-  formData["small"] = document.getElementById("business").value;
   formData["category"] = document.getElementById("select").value;
   formData["commission"] = document.getElementById("commission").value;
-  formData["date"] = document.getElementById("mydate").value;
-  formData["file"] = document.getElementById("myfile").value;
+  formData["ActiveFrom"] = document.getElementById("mydate").value;
+  formData["Logo"] = document.getElementById("myfile").value;
   formData["critical"] = account();
-    formData["payment"] = payment();
+  formData["payment"] = payments();
+  formData["small"] = beginner();
   localStorage.setItem("data", JSON.stringify(formData));
+  console.log(formData);
  return formData;
 }
 function insertNewRecord(data) {
@@ -56,11 +31,11 @@ function insertNewRecord(data) {
   cell4 = newRow.insertCell(3);
   cell4.innerHTML = data.website;
   cell5 = newRow.insertCell(4);
-  cell5.innerHTML = data.contact;
+  cell5.innerHTML = data.ContactName;
   cell6 = newRow.insertCell(5);
-  cell6.innerHTML = data.phone;
+  cell6.innerHTML = data.ContactPhone;
   cell7 = newRow.insertCell(6);
-  cell7.innerHTML = data.another;
+  cell7.innerHTML = data.Contactemail;
   cell8 = newRow.insertCell(7);
   cell8.innerHTML = data.notes;
   cell9 = newRow.insertCell(8);
@@ -70,11 +45,11 @@ function insertNewRecord(data) {
   cell11 = newRow.insertCell(10);
   cell11.innerHTML = data.commission;
   cell12 = newRow.insertCell(11);
-  cell12.innerHTML = data.date;
+  cell12.innerHTML = data.ActiveFrom;
   cell13 = newRow.insertCell(12);
-  cell13.innerHTML = data.file;
+  cell13.innerHTML = data.Logo;
   cell14 = newRow.insertCell(13);
-  cell14.innerHTML = data.yes;
+  cell14.innerHTML = data.critical;
   cell15 = newRow.insertCell(14);
   cell15.innerHTML = data.payment;
   cell16 = newRow.insertCell(15);
@@ -123,16 +98,16 @@ function updateRecord(formData)
   selectedRow.cells[1].innerHTML = formData.email;
   selectedRow.cells[2].innerHTML = formData.number;
   selectedRow.cells[3].innerHTML = formData.website;
-  selectedRow.cells[4].innerHTML = formData.contact;
-  selectedRow.cells[5].innerHTML = formData.phone;
-  selectedRow.cells[6].innerHTML = formData.another;
+  selectedRow.cells[4].innerHTML = formData.ContactName;
+  selectedRow.cells[5].innerHTML = formData.ContactPhone;
+  selectedRow.cells[6].innerHTML = formData.Contactemail;
   selectedRow.cells[7].innerHTML = formData.notes;
   selectedRow.cells[8].innerHTML = formData.small;
   selectedRow.cells[9].innerHTML = formData.category;
   selectedRow.cells[10].innerHTML = formData.commission;
-  selectedRow.cells[11].innerHTML = formData.date;
-  selectedRow.cells[12].innerHTML = formData.file;
-  selectedRow.cells[13].innerHTML = formData.yes;
+  selectedRow.cells[11].innerHTML = formData.ActiveFrom;
+  selectedRow.cells[12].innerHTML = formData.Logo;
+  selectedRow.cells[13].innerHTML = formData.critical;
   selectedRow.cells[14].innerHTML = formData.payment;
 }
 function onDelete(tabledata) {
@@ -150,89 +125,61 @@ function validate() {
   } else {
     isValid = true;
     if (
-      !document.getElementById("firstnameValidationError").classList.contains("hide")
+      document.getElementById("firstnameValidationError").classList.contains("hide")
     )
       document.getElementById("firstnameValidationError").classList.add("hide");
   }
   return isValid;
  }
 
-// function beginner() {
-//   var radio = document.getElementsByName("beginner");
-//   var selectedType = "";
-//   for (i = 0; i < radio.length; i++) {
-//     if (radio[i].checked) selectedType = radio[i].value;
-//   }
-//   return selectedType;
-// }
-// function payment() {
-//   var payments = document.getElementsByName("payment");
-//   var selectedType = [];
-//   for (i = 0; i < payments.length; i++) {
-//     if (payments[i].checked) selectedType.push(payments[i].value);
-//   }
-//   return selectedType;
-// }
-
-function account() {
-  var radio = document.getElementsByName("account");
+function beginner() {
+  var radio = document.getElementsByName("beginner");
   var selectedType = "";
   for (i = 0; i < radio.length; i++) {
     if (radio[i].checked) selectedType = radio[i].value;
   }
   return selectedType;
 }
-
-
-// function payment() {
-//   var paymentMethods = []; // Initialize as an empty array
-//   var paymentCheckboxes = document.querySelectorAll('input[name="payment"]:checked');
-//   paymentCheckboxes.forEach(function (checkbox) {
-//     paymentMethods.push(checkbox.value); // Add selected payment methods to the array
-//   });
-//   return paymentMethods;
-// }
-function payment() {
-  var paymentMethods = []; // Initialize as an empty array
+function payments() {
+  var paymentMethods = []; 
   var paymentCheckboxes = document.querySelectorAll('input[name="payment"]:checked');
   paymentCheckboxes.forEach(function (checkbox) {
     paymentMethods.push(checkbox.value); // Add selected payment methods to the array
   });
 
-  // Clear the selected checkboxes
   paymentCheckboxes.forEach(function (checkbox) {
     checkbox.checked = false;
   });
 
   return paymentMethods;
 }
+
 function onFormSubmit() {
   if (validate()) {
     var formData = readFormData();
-    if (selectedRow == null) insertNewRecord(formData);
-    else updateRecord(formData);
-
-    // Call the payment function to clear the selected checkboxes
-    payment();
-
-    resetForm();
+    if (selectedRow == null) {
+      insertNewRecord(formData);
+    } else {
+      updateRecord(formData);
+    }
   }
+  resetForm();
 }
-  // Clear the selection of "critical" radio buttons
-  var criticalRadios = document.getElementsByName("account");
-  for (var i = 0; i < criticalRadios.length; i++) {
-    criticalRadios[i].checked = false;
-  }
-
+    function account() {
+      let radio = document.getElementsByName("account");
+      let selectedType = "";
+      for (i = 0; i < radio.length; i++) {
+        if (radio[i].checked) selectedType = radio[i].value;
+      }
+      return selectedType;
+    }
   selectedRow = null;
-
-
-
+    
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("myForm");
 
-  form.addEventListener("onSubmit", (event) => {
-    event.preventDefault();
+  // form.addEventListener("onSubmit", (event) => {
+    // event.preventDefault();
 
     const formData = new FormData(form);
 
@@ -240,6 +187,20 @@ document.addEventListener("DOMContentLoaded", () => {
     //   formData.forEach(function (value, key) {
     //     formDataObject[key] = value;
     //   });
+
+    const storedFormData = localStorage.getItem("formData");
+    if (storedFormData) {
+      const parsedData = JSON.parse(storedFormData);
+    
+      // Populate form elements with parsed data
+      for (const key in parsedData) {
+        const input = document.getElementById(key);
+        if (input) {
+          input.value = parsedData[key];
+        }
+      }
+    }
+    
 
     const formDataObject = {};
     formData.forEach((value, key) => {
@@ -255,47 +216,115 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
        // Retrieve existing stored data or initialize an empty array
-       let storedData = JSON.parse(localStorage.getItem("formData")) || [];
+      //  let storedData = JSON.parse(localStorage.getItem("formData")) || [];
 
        // Add the current form data to the stored data array
-       storedData.push(formDataObject);
+      //  storedData.push(formDataObject);
    
        // Store the updated data in localStorage
-       localStorage.setItem("formData", JSON.stringify(storedData));
+      //  localStorage.setItem("formData", JSON.stringify(storedData));
+       localStorage.setItem("formData", JSON.stringify(formDataObject));
+
    
        console.log("Form Data:", formDataObject);
    
-       form.reset();
     });
    
      // Load and populate stored form data on page load
      const storedFormData = localStorage.getItem("formData");
      if (storedFormData) {
-       const parsedData = JSON.parse(storedFormData);
+      //  const parsedData = JSON.parse(storedFormData);
        
-       console.log("Stored Form Data:", parsedData);
+      //  console.log("Stored Form Data:", parsedData);
      }
-});
 
-
-  // Load stored form data on page load
-   const storedFormData = localStorage.getItem("formData");
-  if (storedFormData) {
-    const parsedData = JSON.parse(storedFormData);
-    for (const key in parsedData) {
-      if (Array.isArray(parsedData[key])) {
-        parsedData[key].forEach((value) => {
-          const input = form.querySelector(`[name="${key}"][value="${value}"]`);
-          if (input) {
-            input.checked = true;
-          }
-        });
-      } else {
-        // const inputs = form.querySelector(`[name="${key}"]`);
-        // if (inputs) {
-        //   inputs.value = parsedData[key];
-     }
-     }
-    }
+  //---------------------------------------- filter the datas --------------------------------------------------->
+  // function getSelectedFilterType() {
+  //   var filterRadios = document.getElementsByName("start");
+  
+  //   for (var i = 0; i < filterRadios.length; i++) {
+  //     if (filterRadios[i].checked) {
+  //       return filterRadios[i].value;
+  //     }
+  //   }
   // }
+  function filterBusinessCategory() {
+    var select = document.getElementById('businessCategoryFilter').value; // Get the selected filter value
+    var table = document.getElementById('datas');
+    var rows = table.getElementsByTagName('tr');
 
+    for (var i = 1; i < rows.length; i++) {
+        var row = rows[i];
+        var businessCategoryCell = row.cells[8]; // Assuming the "Business Category" value is in cell index 8
+        var businessCategory = businessCategoryCell.textContent.trim();
+
+        if (select === 'all' || businessCategory === select) {
+            row.style.display = ''; // Display rows that match the filter or 'all'
+        } else {
+            row.style.display = 'none'; // Hide rows that don't match the filter
+        }
+    }
+}
+
+
+  function clearFilter() {
+    var table = document.getElementById("datas");
+    for (var i = 1; i < table.rows.length; i++) {
+      table.rows[i].style.display = ""; 
+    }
+  }
+  function filterCategory() {
+    var select = document.getElementById('categoryFilter').value; // Get the selected filter value
+    var table = document.getElementById('datas');
+
+    for (var i = 1; i < table.rows.length; i++) {
+        var row = table.rows[i];
+        var category = row.cells[9].innerHTML.trim(); // Assuming the "Category" value is in cell index 9
+
+        if (select === 'all' || category.includes(select)) {
+            row.style.display = ''; // Display rows that match the filter or 'all'
+        } else {
+            row.style.display = 'none'; // Hide rows that don't match the filter
+        }
+    }
+}
+
+  function filterSelect() {
+    var select = document.getElementById('criticalFilter').value; // Get the selected filter value
+    var table = document.getElementById('datas');
+
+    for (var i = 1; i < table.rows.length; i++) {
+        var row = table.rows[i];
+        var criticalAccountValue = row.cells[13].innerHTML.trim(); // Assuming the "Critical Account" value is in cell index 13
+
+        if (select === 'all' || criticalAccountValue === select) {
+            row.style.display = ''; // Display rows that match the filter or 'all'
+        } else {
+            row.style.display = 'none'; // Hide rows that don't match the filter
+        }
+    }
+}
+
+
+  // critical account
+function filteraccount() {
+  var filteraccount = getSelectedFilterAccount();
+  // console.log(filteraccount)
+  //   // cellno=8;
+  filterData(filteraccount, 13);
+}
+function filterPayment() {
+  var select = document.getElementById('transactions').value; // Get the selected filter value
+  var table = document.getElementById('datas');
+
+  for (var i = 1; i < table.rows.length; i++) {
+      var row = table.rows[i];
+      var paymentOptions = row.cells[14].innerHTML.trim(); // Assuming the "Payment Options" value is in cell index 14
+
+      if (select === 'all' || paymentOptions.includes(select)) {
+          row.style.display = ''; // Display rows that match the filter or 'all'
+      } else {
+          row.style.display = 'none'; // Hide rows that don't match the filter
+      }
+  }
+}
